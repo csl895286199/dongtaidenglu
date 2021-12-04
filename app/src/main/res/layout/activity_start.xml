@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.a99999.StartActivity"
+    android:background="@drawable/start_background">
+
+    <!--背景图片-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
+
+    <!--添加虚化层-->
+    <io.alterac.blurkit.BlurLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:blk_blurRadius="25"
+        app:blk_fps="0" />
+
+    <!--猫头鹰-->
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_alignTop="@id/bg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-100dp">
+
+        <!--头像-->
+        <ImageView
+            android:id="@+id/iv_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/owl_head" />
+
+        <!--手掌-->
+        <ImageView
+            android:id="@+id/iv_left_hand"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_alignBottom="@id/iv_head"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="-20dp"
+            android:src="@drawable/icon_hand" />
+
+        <ImageView
+            android:id="@+id/iv_right_hand"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_alignBottom="@id/iv_head"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="-20dp"
+            android:src="@drawable/icon_hand" />
+
+        <!--翅膀-->
+        <ImageView
+            android:id="@+id/iv_left_arm"
+            android:layout_width="65dp"
+            android:layout_height="90dp"
+            android:layout_below="@id/iv_head"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/arm_left" />
+
+        <ImageView
+            android:id="@+id/iv_right_arm"
+            android:layout_width="65dp"
+            android:layout_height="90dp"
+            android:layout_below="@id/iv_head"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/arm_right" />
+    </RelativeLayout>
+
+    <!--输入框背景-->
+    <io.alterac.blurkit.BlurLayout
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/input_bg_shape"
+        app:blk_blurRadius="20"
+        app:blk_fps="0" />
+
+
+    <!--添加标题和输入框视图-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+
+        <EditText
+            android:id="@+id/et_login_user"
+            style="@style/EditTextStyle"
+            android:hint="请输入用户名"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et_login_password"
+            style="@style/EditTextStyle"
+            android:hint="请输入密码"
+            android:inputType="textPassword" />
+
+<!--        <Button-->
+<!--            android:id="@+id/bt_login"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:enabled="false"-->
+<!--            android:text="登录"-->
+<!--            android:textColor="#ffffff" />-->
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_regist"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:background="#00000000"
+        android:text="   没有账户？/注册"
+        android:textColor="#e6ffffff"/>
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="260dp"
+        android:background="@drawable/shape_button"
+        android:text="账号登录"
+        android:textColor="#FFFFFFFF"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/monile_login"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="200dp"
+        android:textColor="#FFFFFFFF"
+        android:background="@drawable/shape_button"
+        android:textSize="15sp"
+        android:text="手机登录" />
+
+<!--    <EditText-->
+<!--        android:id="@+id/et_login_user"-->
+<!--        android:layout_width="286dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginBottom="191dp"-->
+<!--        android:hint="用户名"-->
+<!--        android:textColorHint="#bfffffff"-->
+<!--        android:textColor="#ffffffff"/>-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/et_login_password"-->
+<!--        android:layout_width="288dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/et_login_user"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="-191dp"-->
+<!--        android:hint="密码"-->
+<!--        android:textColorHint="#bfffffff"-->
+<!--        android:textColor="#ffffffff" />-->
+
+
+</RelativeLayout>
