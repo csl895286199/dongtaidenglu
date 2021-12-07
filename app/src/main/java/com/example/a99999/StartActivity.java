@@ -24,12 +24,15 @@ import android.widget.Toast;
 import com.example.a99999.MainActivity;
 import com.example.sht.homework.R;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
-public class StartActivity extends AppCompatActivity implements TextWatcher, View.OnClickListener{
+public class StartActivity extends AppCompatActivity implements TextWatcher, View.OnClickListener {
 
     TextView tv_regist;
     EditText et_login_user, et_login_password;
@@ -73,7 +76,7 @@ public class StartActivity extends AppCompatActivity implements TextWatcher, Vie
 
     }
 
-    public void initViews(){
+    public void initViews() {
 
 
         //监听内容改变 -> 控制按钮的点击状态
@@ -84,10 +87,10 @@ public class StartActivity extends AppCompatActivity implements TextWatcher, Vie
         et_login_password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus == true){
+                if (hasFocus == true) {
                     //捂住眼睛
                     close();
-                }else{
+                } else {
                     //打开
                     open();
                 }
@@ -125,13 +128,13 @@ public class StartActivity extends AppCompatActivity implements TextWatcher, Vie
 
                     @Override
                     public void done(BmobUser bmobUser, BmobException e) {
-                        if(e==null){
+                        if (e == null) {
                             Toast.makeText(StartActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
                             Intent intent_main = new Intent(StartActivity.this, MainActivity.class);
                             startActivity(intent_main);
                             //通过BmobUser user = BmobUser.getCurrentUser()获取登录成功后的本地用户信息
                             //如果是自定义用户对象MyUser，可通过MyUser user = BmobUser.getCurrentUser(MyUser.class)获取自定义用户信息
-                        }else{
+                        } else {
                             Toast.makeText(StartActivity.this, "登陆失败", Toast.LENGTH_SHORT).show();
 
                             //loge(e);
@@ -149,21 +152,21 @@ public class StartActivity extends AppCompatActivity implements TextWatcher, Vie
      * 当有控件获得焦点focus 自动弹出键盘
      * 1. 点击软键盘的enter键 自动收回键盘
      * 2. 代码控制 InputMethodManager
-     *    requestFocus
-     *    showSoftInput:显示键盘 必须先让这个view成为焦点requestFocus
-     *
-     *    hideSoftInputFromWindow 隐藏键盘
+     * requestFocus
+     * showSoftInput:显示键盘 必须先让这个view成为焦点requestFocus
+     * <p>
+     * hideSoftInputFromWindow 隐藏键盘
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN){
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
             //隐藏键盘
             //1.获取系统输入的管理器
             InputMethodManager inputManager =
                     (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
             //2.隐藏键盘
-            inputManager.hideSoftInputFromWindow(et_login_user.getWindowToken(),0);
+            inputManager.hideSoftInputFromWindow(et_login_user.getWindowToken(), 0);
 
             //3.取消焦点
             View focusView = getCurrentFocus();
@@ -192,49 +195,49 @@ public class StartActivity extends AppCompatActivity implements TextWatcher, Vie
     public void afterTextChanged(Editable s) {
         //判断两个输入框是否有内容
         if (et_login_user.getText().toString().length() > 0 &&
-                et_login_password.getText().toString().length() > 0){
+                et_login_password.getText().toString().length() > 0) {
             //按钮可以点击
             bt_login.setEnabled(true);
-        }else{
+        } else {
             //按钮不能点击
             bt_login.setEnabled(false);
         }
     }
 
-    public void close(){
+    public void close() {
         //左边
-        RotateAnimation lAnim = new RotateAnimation(0,170,leftArm.getWidth(),0f);
+        RotateAnimation lAnim = new RotateAnimation(0, 170, leftArm.getWidth(), 0f);
         lAnim.setDuration(500);
         lAnim.setFillAfter(true);
 
         leftArm.startAnimation(lAnim);
 
-        RotateAnimation rAnim = new RotateAnimation(0, -170,0f,0f);
+        RotateAnimation rAnim = new RotateAnimation(0, -170, 0f, 0f);
         rAnim.setDuration(500);
         rAnim.setFillAfter(true);
 
         rightArm.startAnimation(rAnim);
 
-        TranslateAnimation down = (TranslateAnimation) AnimationUtils.loadAnimation(this,R.anim.hand_down_anim);
+        TranslateAnimation down = (TranslateAnimation) AnimationUtils.loadAnimation(this, R.anim.hand_down_anim);
         leftHand.startAnimation(down);
         rightHand.startAnimation(down);
     }
 
-    public void open(){
+    public void open() {
         //左边
-        RotateAnimation lAnim = new RotateAnimation(170,0,leftArm.getWidth(),0f);
+        RotateAnimation lAnim = new RotateAnimation(170, 0, leftArm.getWidth(), 0f);
         lAnim.setDuration(500);
         lAnim.setFillAfter(true);
 
         leftArm.startAnimation(lAnim);
 
-        RotateAnimation rAnim = new RotateAnimation(-170,0,0f,0f);
+        RotateAnimation rAnim = new RotateAnimation(-170, 0, 0f, 0f);
         rAnim.setDuration(500);
         rAnim.setFillAfter(true);
 
         rightArm.startAnimation(rAnim);
 
-        TranslateAnimation up = (TranslateAnimation) AnimationUtils.loadAnimation(this,R.anim.hand_up_anim);
+        TranslateAnimation up = (TranslateAnimation) AnimationUtils.loadAnimation(this, R.anim.hand_up_anim);
         leftHand.startAnimation(up);
         rightHand.startAnimation(up);
     }

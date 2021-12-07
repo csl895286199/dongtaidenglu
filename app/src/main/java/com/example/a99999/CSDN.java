@@ -13,7 +13,6 @@ import com.example.sht.homework.R;
 
 public class CSDN extends AppCompatActivity {
 
-    private WebView webView;
     private long exitTime=0;
 
     @Override

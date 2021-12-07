@@ -7,7 +7,7 @@
     >
 
     <WebView
-        android:id="@+id/web_home"
+        android:id="@+id/web_history"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
